@@ -15,6 +15,9 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
             <li className="nav-item">
               <Link className="nav-link" to="/">Inicio</Link>
             </li>
+            <li className="nav-item">
+            <Link className="nav-link" to="/create-hotel">Crear Hotel</Link>
+            </li>
           </ul>
           <ul className="navbar-nav">
             {!isAuthenticated ? (

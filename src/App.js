@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from '../src/componentes/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Register from './pages/Register'; // Asegúrate de tener la página de registro
+import Register from './pages/Register'; 
+import CreateHotel from './pages/CreateHotel'; 
+import Hotels from './pages/Hotels'; 
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -19,10 +21,13 @@ const App = () => {
   return (
     <Router>
       <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-      <Routes> {/* Cambia Switch por Routes */}
+      <Routes> 
+        {/* <Route path="/" exact component={Hotels} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/create-hotel" element={<CreateHotel />} />
+        <Route path="/hotels" element={<Hotels />} />
       </Routes>
     </Router>
   );
