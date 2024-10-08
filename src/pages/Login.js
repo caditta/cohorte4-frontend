@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Cambia useHistory por useNavigate
 import authService from '../services/authService';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -14,10 +14,12 @@ const Login = () => {
 
     try {
       const response = await authService.login(email, password);
+      onLogin();
       // Guardar el token en localStorage o en el estado global
       localStorage.setItem('token', response.token);
       // Redirigir al usuario a la página de inicio o donde desees
-      navigate('/'); // Cambia history.push por navigate
+      navigate('/');
+      // 
     } catch (err) {
       setError(err.response ? err.response.data.message : 'Error de conexión');
     }
